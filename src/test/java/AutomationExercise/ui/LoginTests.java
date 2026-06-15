@@ -1,4 +1,4 @@
-package AutomationExercise;
+package AutomationExercise.ui;
 
 import AutomationExercise.pages.HomePageElements;
 import AutomationExercise.pages.LoginPageElements;
@@ -51,7 +51,7 @@ public class LoginTests {
 
     @Test
 
-    public void testEmailLoginHappyPath() {
+    public void testLoginHappyPath() {
         driver.get(baseURL);
 
         BasicFunctions.waitElements(HomePageElements.consentButton);
@@ -71,6 +71,24 @@ public class LoginTests {
         Assert.assertEquals(HomePageElements.testUserName.getText(), "Olga");
     }
 
+    @Test
 
+    public void testLoginIncorrectPassword() {
+        driver.get(baseURL);
+
+        BasicFunctions.waitElements(HomePageElements.consentButton);
+        HomePageElements.consentButton.click();
+        HomePageElements.signupLoginButton.click();
+        LoginPageElements.enterEmail("olga.dovnar.v@gmail.com");
+        LoginPageElements.enterPassword("Aut");
+        LoginPageElements.loginButtonClick();
+
+        BasicFunctions.waitElements(LoginPageElements.passwordError);
+        Assert.assertTrue(
+                LoginPageElements.passwordError.getText().contains("Your email or password is incorrect!"),
+                "Error text is incorrect"
+        );
+
+    }
 
 }

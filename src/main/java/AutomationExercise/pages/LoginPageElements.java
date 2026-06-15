@@ -18,6 +18,9 @@ public class LoginPageElements {
     @FindBy(xpath = "//*[@data-qa='login-button']")
     WebElement loginButton;
 
+    @FindBy(xpath = "//p[@style='color: red;']")
+    public WebElement passwordError;
+
     public LoginPageElements(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
