@@ -11,6 +11,9 @@ public class HomePageElements {
     @FindBy(css = "a[href='/login']")
     public WebElement signupLoginButton;
 
+    @FindBy(css = "a[href='/products']")
+    public WebElement products;
+
     @FindBy(className="fc-button-label")
     public WebElement consentButton;
 
